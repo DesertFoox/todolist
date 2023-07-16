@@ -118,6 +118,7 @@ export default function App() {
                         >
                           {(provided) => (
                             <div
+                              className="ml-4"
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
@@ -161,6 +162,7 @@ export default function App() {
                         >
                           {(provided) => (
                             <div
+                              className="ml-4"
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
@@ -203,6 +205,7 @@ export default function App() {
                         >
                           {(provided) => (
                             <div
+                              className="ml-4"
                               ref={provided.innerRef}
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
