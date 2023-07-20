@@ -11,6 +11,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ onAddTask }) => {
 
   const openModal = () => {
     setIsModalOpen(true);
+    
   };
 
   const closeModal = () => {
