@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
+
 import AddTaskModal from "../components/addTaskModal/AddTaskModal";
 import TaskBoard from "../components/taskBoard/TaskBoard";
 import { TaskContext } from "../core/context/TaskContext";
-import ITaskInterface from "../core/interfaces/ITaskInterface";
 
 const Task: React.FC = () => {
   const { tasks, setTask, addTask } = useContext(TaskContext);

@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 import validationSchema from "../../core/validations/TaskFormValidation";
 
@@ -19,8 +20,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
   });
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
-    onAddTask(data); // Call the onAddTask function with the form data
+    onAddTask(data); 
   };
 
   return (
@@ -80,7 +80,6 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
           </p>
         )}
       </div>
-      {/* Add "tag" select option */}
       <div className="mb-4">
         <label htmlFor="tag" className="block text-white font-bold mb-2">
           Tag
@@ -103,8 +102,6 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
           <p className="text-red-500 text-sm mt-1">{errors.tag.message}</p>
         )}
       </div>
-
-      {/* Add date pickers for "startDate" and "endDate" */}
       <div className="mb-4">
         <label htmlFor="startDate" className="block text-white font-bold mb-2">
           Start Date

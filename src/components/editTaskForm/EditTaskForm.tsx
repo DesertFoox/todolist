@@ -48,7 +48,6 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
         )}
       </div>
 
-      {/* Add "tag" select option */}
       <div className="mb-4">
         <label htmlFor="tag" className="block text-white font-bold mb-2">
           Tag
@@ -73,7 +72,6 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
         )}
       </div>
 
-      {/* Add date pickers for "startDate" and "endDate" */}
       <div className="mb-4">
         <label htmlFor="startDate" className="block text-white font-bold mb-2">
           Start Date
@@ -112,7 +110,6 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
         )}
       </div>
 
-      {/* ... Add other input fields for the remaining props */}
       <div className="flex justify-center">
         <button
           type="submit"

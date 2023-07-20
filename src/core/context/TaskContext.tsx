@@ -1,7 +1,6 @@
 import React, { createContext, useState } from "react";
-import ITaskInterface from "../interfaces/ITaskInterface";
 
-// Create the context
+import ITaskInterface from "../interfaces/ITaskInterface";
 interface TaskContextProps {
   tasks: ITaskInterface[];
   addTask: (task: ITaskInterface) => void;
@@ -23,7 +22,6 @@ const TaskContext = createContext<TaskContextProps>({
   deleteTask: () => {},
   findTask: () => {},
 });
-// Create the context provider
 const TaskProvider: React.FC<Props> = ({ children }) => {
   const [tasks, setTasks] = useState<ITaskInterface[]>([]);
 

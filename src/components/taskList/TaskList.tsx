@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Draggable } from "react-beautiful-dnd";
+
 import TaskCard from "../TaskCard/TaskCard";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 
@@ -25,7 +26,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status }) => {
       color = "bg-testing";
       break;
     default:
-      color = ""; // Set a default value if 'status' doesn't match any of the cases.
+      color = ""; 
       break;
   }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
+
 import TaskList from "../taskList/TaskList";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 
@@ -9,12 +10,8 @@ interface TaskBoardProps {
 }
 
 const TaskBoard: React.FC<TaskBoardProps> = ({ tasks, onDragEnd }) => {
-  const statuses = ["notStarted", "inProgress", "completed", "testing"];
-
   const [selectedFilter, setSelectedFilter] = useState<string | "all">("all");
-
-  const [searchQuery, setSearchQuery] = useState<string>("");
-
+  const statuses = ["notStarted", "inProgress", "completed", "testing"];
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedFilter(event.target.value);
   };
@@ -41,12 +38,10 @@ const TaskBoard: React.FC<TaskBoardProps> = ({ tasks, onDragEnd }) => {
 
 
       <div className="flex justify-between mt-6">
-        {/* Render Droppable TaskLists */}
         {statuses.map((status) => (
           <Droppable key={status} droppableId={status}>
             {(provided) => (
               <>
-                {/* Only render TaskList when selectedFilter matches the status or "all" */}
                 {selectedFilter === status || selectedFilter === "all" ? (
                   <TaskList
                     tasks={tasks.filter((task) =>
