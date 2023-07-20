@@ -1,10 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import validationSchema from "../../core/validations/TaskFormValidation";
 import EditTaskForm from "../editTaskForm/EditTaskForm";
-import { TaskContext } from "../../core/context/TaskContext";
 
 interface EditTaskModalProps {
   task: ITaskInterface;
@@ -13,15 +9,8 @@ interface EditTaskModalProps {
   onCancel: () => void;
 }
 
-const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, id }) => {
+const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, onSave }) => {
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const { deleteTask, editTask } = useContext(TaskContext);
-  const [isEditing, setIsEditing] = useState(false);
-
-  const handleSave = (updatedTask: ITaskInterface) => {
-    editTask(id, updatedTask);
-    setIsEditing(false);
-  };
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -50,11 +39,7 @@ const EditTaskModal: React.FC<EditTaskModalProps> = ({ task, id }) => {
               aria-modal="true"
               aria-labelledby="modal-headline"
             >
-              <EditTaskForm
-                task={task}
-                onSave={handleSave}
-                onCancel={closeModal}
-              />
+              <EditTaskForm task={task} onSave={onSave} onCancel={closeModal} />
             </div>
           </div>
         </div>

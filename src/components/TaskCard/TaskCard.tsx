@@ -35,7 +35,7 @@ const TaskCard: React.FC<ITaskInterface> = ({
 
   return (
     <div key={id} className="bg-white rounded-lg p-4 shadow-md mb-2 ">
-      {isEditing ? (
+      {isEditing && (
         <EditTaskModal
           id={id}
           task={{
@@ -51,37 +51,35 @@ const TaskCard: React.FC<ITaskInterface> = ({
           onSave={handleSave}
           onCancel={() => setIsEditing(false)}
         />
-      ) : (
-        <>
-          <h3 className="text-lg font-semibold mb-2">{title}</h3>
-          <p className="text-[#9B7B8A] text-sm mb-2 bg-[#F5E0E9] w-[5rem] text-center rounded px-2">
-            {tag}
-          </p>
-          <p className="text-gray-500 text-sm mb-2 px-2">Creator: {creator}</p>
-          <p className="text-gray-500 text-sm mb-2 px-2">
-            {startDate} {"--->"} {endDate}
-          </p>
-          <p className="text-gray-700 text-sm mb-2 px-2">
-            {truncateDescription(description, 7)}
-          </p>
-          <div className="px-2 mb-2 flex gap-2">
-            <button
-              className="text-blue-400"
-              onClick={() => setIsEditing(true)}
-            >
-              <FiEdit2 />
-            </button>
-            <button
-              className="text-red-400"
-              onClick={() => {
-                deleteTask(id);
-              }}
-            >
-              <FiTrash2 />
-            </button>
-          </div>
-        </>
       )}
+
+      <h3 className="text-lg font-semibold mb-2">{title}</h3>
+      <p className="text-[#9B7B8A] text-sm mb-2 bg-[#F5E0E9] w-[5rem] text-center rounded px-2">
+        {tag}
+      </p>
+      <p className="text-gray-500 text-sm mb-2 px-2">Creator: {creator}</p>
+      <p className="text-gray-500 text-sm mb-2 px-2">
+        {startDate} {"--->"} {endDate}
+      </p>
+      <p className="text-gray-700 text-sm mb-2 px-2">
+        {truncateDescription(description, 7)}
+      </p>
+      <div className="px-2 mb-2 flex gap-2">
+        <button
+          className="text-blue-400"
+          onClick={() => setIsEditing(!isEditing)}
+        >
+          <FiEdit2 />
+        </button>
+        <button
+          className="text-red-400"
+          onClick={() => {
+            deleteTask(id);
+          }}
+        >
+          <FiTrash2 />
+        </button>
+      </div>
     </div>
   );
 };
