@@ -23,7 +23,48 @@ const TaskContext = createContext<TaskContextProps>({
   findTask: () => {},
 });
 const TaskProvider: React.FC<Props> = ({ children }) => {
-  const [tasks, setTasks] = useState<ITaskInterface[]>([]);
+  const [tasks, setTasks] = useState<ITaskInterface[]>([
+    {
+      title: "create todo list",
+      creator: "salar",
+      description: "i should create todo list and push it into github",
+      tag: "project",
+      startDate: "2023-07-20",
+      endDate: "2023-07-22",
+      id: "item1",
+      status: "notStarted",
+    },
+    {
+      title: "create todo list",
+      creator: "salar",
+      description: "i should create todo list and push it into github",
+      tag: "project",
+      startDate: "2023-07-20",
+      endDate: "2023-07-22",
+      id: "item2",
+      status: "inProgress",
+    },
+    {
+      title: "create todo list",
+      creator: "salar",
+      description: "i should create todo list and push it into github",
+      tag: "project",
+      startDate: "2023-07-20",
+      endDate: "2023-07-22",
+      id: "item3",
+      status: "completed",
+    },
+    {
+      title: "create todo list",
+      creator: "salar",
+      description: "i should create todo list and push it into github",
+      tag: "project",
+      startDate: "2023-07-20",
+      endDate: "2023-07-22",
+      id: "item4",
+      status: "testing",
+    },
+  ]);
 
   const addTask = (task: ITaskInterface) => {
     const newTask = {
