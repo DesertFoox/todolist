@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// @ts-ignore
 import AddTaskForm from "../AddTaskForm/addtaskForm"; 
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 
