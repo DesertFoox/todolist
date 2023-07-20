@@ -1,7 +1,6 @@
 interface FormFieldProps {
   label: string;
   name: string;
-  type?: string;
   errors: any;
   children: React.ReactNode;
 }
@@ -9,7 +8,6 @@ interface FormFieldProps {
 const FormField: React.FC<FormFieldProps> = ({
   label,
   name,
-  type = "text",
   errors,
   children,
 }) => (
