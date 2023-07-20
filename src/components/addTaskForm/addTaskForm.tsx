@@ -5,10 +5,11 @@ import ITaskInterface from "../../core/interfaces/ITaskInterface";
 import validationSchema from "../../core/validations/TaskFormValidation";
 
 interface AddTaskFormProps {
+  closeModal: any;
   onAddTask: (task: ITaskInterface) => void;
 }
 
-const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
+const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
   const {
     register,
     handleSubmit,
@@ -140,11 +141,19 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask }) => {
         )}
       </div>
       <div className="flex justify-center">
-        <input
+        <button
           type="submit"
-          value={"Add Task"}
           className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-md focus:outline-none"
-        />
+        >
+          Save
+        </button>
+        <button
+          type="button"
+          onClick={closeModal}
+          className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-md focus:outline-none ml-2"
+        >
+          Cancel
+        </button>
       </div>
     </form>
   );
