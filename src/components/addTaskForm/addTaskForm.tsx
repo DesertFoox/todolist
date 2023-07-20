@@ -1,14 +1,16 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import ITaskInterface from "../../core/interfaces/ITaskInterface";
+import FormField from "../common/formField/FormField";
 import validationSchema from "../../core/validations/TaskFormValidation";
+import ITaskInterface from "../../core/interfaces/ITaskInterface";
+
 
 interface AddTaskFormProps {
   closeModal: any;
   onAddTask: (task: ITaskInterface) => void;
 }
+
 
 const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
   const {
@@ -20,15 +22,12 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
   });
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    onAddTask(data); 
+    onAddTask(data);
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-white font-bold mb-2">
-          Title
-        </label>
+      <FormField label="Title" name="title" errors={errors}>
         <input
           {...register("title")}
           type="text"
@@ -37,15 +36,9 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
             errors.title ? "border-red-500" : ""
           }`}
         />
-        {errors.title && (
-          <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label htmlFor="creator" className="block text-white font-bold mb-2">
-          Creator
-        </label>
+      <FormField label="Creator" name="creator" errors={errors}>
         <input
           {...register("creator")}
           type="text"
@@ -54,18 +47,9 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
             errors.creator ? "border-red-500" : ""
           }`}
         />
-        {errors.creator && (
-          <p className="text-red-500 text-sm mt-1">{errors.creator.message}</p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label
-          htmlFor="description"
-          className="block text-white font-bold mb-2"
-        >
-          Description
-        </label>
+      <FormField label="Description" name="description" errors={errors}>
         <textarea
           {...register("description")}
           id="description"
@@ -74,17 +58,9 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
             errors.description ? "border-red-500" : ""
           }`}
         />
-        {errors.description && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.description.message}
-          </p>
-        )}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="tag" className="block text-white font-bold mb-2">
-          Tag
-        </label>
+      </FormField>
 
+      <FormField label="Tag" name="tag" errors={errors}>
         <select
           {...register("tag")}
           id="tag"
@@ -98,14 +74,9 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
           <option value="homework">Homework</option>
           <option value="work">Work</option>
         </select>
-        {errors.tag && (
-          <p className="text-red-500 text-sm mt-1">{errors.tag.message}</p>
-        )}
-      </div>
-      <div className="mb-4">
-        <label htmlFor="startDate" className="block text-white font-bold mb-2">
-          Start Date
-        </label>
+      </FormField>
+
+      <FormField label="Start Date" name="startDate" errors={errors}>
         <input
           {...register("startDate")}
           type="date"
@@ -114,17 +85,9 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
             errors.startDate ? "border-red-500" : ""
           }`}
         />
-        {errors.startDate && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.startDate.message}
-          </p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label htmlFor="endDate" className="block text-white font-bold mb-2">
-          End Date
-        </label>
+      <FormField label="End Date" name="endDate" errors={errors}>
         <input
           {...register("endDate")}
           type="date"
@@ -133,10 +96,8 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
             errors.endDate ? "border-red-500" : ""
           }`}
         />
-        {errors.endDate && (
-          <p className="text-red-500 text-sm mt-1">{errors.endDate.message}</p>
-        )}
-      </div>
+      </FormField>
+
       <div className="flex justify-center">
         <button
           type="submit"

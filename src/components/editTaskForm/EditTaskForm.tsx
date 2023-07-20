@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 import validationSchema from "../../core/validations/TaskFormValidation";
+import FormField from "../common/formField/FormField";
 
 interface EditTaskFormProps {
   task: ITaskInterface;
@@ -30,10 +31,7 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="mb-4">
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-white font-bold mb-2">
-          Title
-        </label>
+      <FormField label="Title" name="title" errors={errors}>
         <input
           {...register("title")}
           type="text"
@@ -43,16 +41,9 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
             errors.title ? "border-red-500" : ""
           }`}
         />
-        {errors.title && (
-          <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label htmlFor="tag" className="block text-white font-bold mb-2">
-          Tag
-        </label>
-
+      <FormField label="Tag" name="tag" errors={errors}>
         <select
           {...register("tag")}
           id="tag"
@@ -67,49 +58,31 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
           <option value="homework">Homework</option>
           <option value="work">Work</option>
         </select>
-        {errors.tag && (
-          <p className="text-red-500 text-sm mt-1">{errors.tag.message}</p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label htmlFor="startDate" className="block text-white font-bold mb-2">
-          Start Date
-        </label>
+      <FormField label="Start Date" name="startDate" errors={errors}>
         <input
           {...register("startDate")}
           type="date"
-          id="startDate"
           defaultValue={task.startDate}
+          id="startDate"
           className={`w-full px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none ${
             errors.startDate ? "border-red-500" : ""
           }`}
         />
-        {errors.startDate && (
-          <p className="text-red-500 text-sm mt-1">
-            {errors.startDate.message}
-          </p>
-        )}
-      </div>
+      </FormField>
 
-      <div className="mb-4">
-        <label htmlFor="endDate" className="block text-white font-bold mb-2">
-          End Date
-        </label>
+      <FormField label="End Date" name="endDate" errors={errors}>
         <input
           {...register("endDate")}
           type="date"
-          id="endDate"
           defaultValue={task.endDate}
+          id="endDate"
           className={`w-full px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none ${
             errors.endDate ? "border-red-500" : ""
           }`}
         />
-        {errors.endDate && (
-          <p className="text-red-500 text-sm mt-1">{errors.endDate.message}</p>
-        )}
-      </div>
-
+      </FormField>
       <div className="flex justify-center">
         <button
           type="submit"
