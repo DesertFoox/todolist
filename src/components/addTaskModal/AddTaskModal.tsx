@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddTaskForm from "../addTaskForm/AddTaskForm";
+import AddTaskForm from "../addTaskForm/addtaskForm";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 
 interface AddTaskModalProps {
