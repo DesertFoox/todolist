@@ -54,6 +54,7 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, status }) => {
                     description={task.description}
                     startDate={task.startDate}
                     endDate={task.endDate}
+                    status={status}
                   />
                 </div>
               )}
