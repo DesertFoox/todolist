@@ -4,14 +4,22 @@ import TaskBoard from "../components/taskBoard/TaskBoard";
 import { TaskContext } from "../core/context/TaskContext";
 
 const Task: React.FC = () => {
-  const { addTask,tasks } = useContext(TaskContext);
-  const handleDragEnd = (result: any) => {
-    // Handle drag and drop logic here
+  const { addTask, tasks, setTask } = useContext(TaskContext);
+  const onDragEnd = (result: any) => {
+    const { source, destination } = result;
+    console.log(result);
+    if (source.dragDropContext === destination.dragDropContext) {
+      const draggedTask: any = tasks.find(
+        (task) => task.id === result.draggableId
+      );
+      draggedTask.status = destination.droppableId;
+      setTask(tasks);
+    }
   };
   return (
     <>
       <AddTaskModal onAddTask={addTask} />
-      <TaskBoard tasks={tasks} onDragEnd={handleDragEnd} />
+      <TaskBoard tasks={tasks} onDragEnd={onDragEnd} />
     </>
   );
 };
