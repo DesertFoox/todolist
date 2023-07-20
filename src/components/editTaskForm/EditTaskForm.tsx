@@ -42,7 +42,17 @@ const EditTaskForm: React.FC<EditTaskFormProps> = ({
           }`}
         />
       </FormField>
-
+      <FormField label="Description" name="title" errors={errors}>
+        <textarea
+          {...register("description")}
+          id="description"
+          defaultValue={task.description}
+          rows={4}
+          className={`w-full px-3 py-2 rounded-md bg-gray-800 text-white focus:outline-none ${
+            errors.description ? "border-red-500" : ""
+          }`}
+        />
+      </FormField>
       <FormField label="Tag" name="tag" errors={errors}>
         <select
           {...register("tag")}
