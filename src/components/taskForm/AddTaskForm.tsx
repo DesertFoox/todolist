@@ -5,12 +5,10 @@ import FormField from "../common/formField/FormField";
 import validationSchema from "../../core/validations/TaskFormValidation";
 import ITaskInterface from "../../core/interfaces/ITaskInterface";
 
-
 interface AddTaskFormProps {
   closeModal: any;
   onAddTask: (task: ITaskInterface) => void;
 }
-
 
 const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
   const {
@@ -23,6 +21,7 @@ const AddTaskForm: React.FC<AddTaskFormProps> = ({ onAddTask, closeModal }) => {
 
   const onSubmit: SubmitHandler<any> = (data) => {
     onAddTask(data);
+    closeModal();
   };
 
   return (
